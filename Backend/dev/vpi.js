@@ -1,10 +1,10 @@
+const { addProduct, getAllProducts } = require("./product");
 const express = require("express");
 const app = express();
 const uuid = require("uuid");
 const Blockchain = require("./blockchain");
 const TheChain = new Blockchain();
 const nodeAddress = uuid.v1().split("-").join("");
-
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,10 +41,45 @@ app.get("/mine", function (req, res) {
     nonce
   );
   const newBlock = TheChain.createNewBlock(nonce, previousBlockHash, blockHash);
-  TheChain.createNewTransaction(12.5, "00", nodeAddress);
+  TheChain.createNewTransaction(50, "00", nodeAddress);
   res.json({
     note: "New block mined successfully",
     block: newBlock,
+  });
+});
+
+app.post("/register-product", (req, res) => {
+  const { name, price, seller } = req.body;
+  const product = addProduct(name, price, seller);
+  res.json({ note: "Product registered successfully", product });
+});
+
+app.get("/products", (req, res) => {
+  res.json(getAllProducts());
+});
+
+app.post("/purchase", function (req, res) {
+  const { buyer, seller, productId, amount } = req.body;
+
+  const buyerBalance = blockchain.getUserBalance(buyer);
+  if (buyerBalance < amount) {
+    return res.status(400).json({ error: "Insufficient balance" });
+  }
+
+  // Create transaction
+  const transaction = blockchain.createNewTransaction(amount, buyer, seller);
+  blockchain.addTransactionToPendingTransactions(transaction);
+
+  res.json({ note: "Purchase transaction created", transaction });
+});
+
+app.get("/wallet/:address", function (req, res) {
+  const userAddress = req.params.address;
+  const balance = AbhulimenOjie_7762.getUserBalance(userAddress);
+
+  res.json({
+    address: userAddress,
+    balance: balance,
   });
 });
 
