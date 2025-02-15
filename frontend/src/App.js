@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BlockchainProvider } from "./context/BlockchainContext";
+import Home from "./pages/Home";
+import Marketplace from "./pages/Marketplace";
+import Wallet from "./pages/Wallet";
+import Navbar from "./components/Navbar";
+import Transactions from "./pages/transactions";
+import Mine from "./pages/Mine";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BlockchainProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/wallet" element={<Wallet />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/mine" element={<Mine />} />
+        </Routes>
+      </Router>
+    </BlockchainProvider>
   );
 }
 

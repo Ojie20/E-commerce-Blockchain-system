@@ -1,5 +1,4 @@
 //List of all the products and their attributes
-const genId = require("./id-gen");
 export const products = [
   {
     id: "a",
@@ -10,6 +9,7 @@ export const products = [
       count: 87,
     },
     price: 2000,
+    seller: "ahsjdjss",
     keywords: ["socks", "sports", "apparel"],
   },
   {
@@ -21,6 +21,7 @@ export const products = [
       count: 127,
     },
     price: 10000,
+    seller: "ahsjdjss",
     keywords: ["sports", "basketballs"],
   },
   {
@@ -32,6 +33,7 @@ export const products = [
       count: 56,
     },
     price: 5000,
+    seller: "ahsjdjss",
     keywords: ["tshirts", "apparel", "mens"],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png",
@@ -45,6 +47,7 @@ export const products = [
       count: 2197,
     },
     price: 40000,
+    seller: "ahsjdjss",
     keywords: ["toaster", "kitchen", "appliances"],
   },
   {
@@ -56,6 +59,7 @@ export const products = [
       count: 37,
     },
     price: 30000,
+    seller: "ahsjdjss",
     keywords: ["plates", "kitchen", "dining"],
   },
   {
@@ -67,6 +71,7 @@ export const products = [
       count: 175,
     },
     price: 35000,
+    seller: "ahsjdjss",
     keywords: ["kitchen", "cookware"],
   },
   {
@@ -78,6 +83,7 @@ export const products = [
       count: 317,
     },
     price: 10000,
+    seller: "ahsjdjss",
     keywords: ["hoodies", "sweaters", "apparel"],
   },
   {
@@ -89,6 +95,7 @@ export const products = [
       count: 144,
     },
     price: 12000,
+    seller: "ahsjdjss",
     keywords: ["bathroom", "washroom", "restroom", "towels", "bath towels"],
   },
   {
@@ -100,6 +107,7 @@ export const products = [
       count: 305,
     },
     price: 3000,
+    seller: "ahsjdjss",
     keywords: ["bathroom", "cleaning"],
   },
   {
@@ -111,6 +119,7 @@ export const products = [
       count: 89,
     },
     price: 3500,
+    seller: "ahsjdjss",
     keywords: ["shoes", "running shoes", "footwear"],
   },
   {
@@ -122,6 +131,7 @@ export const products = [
       count: 235,
     },
     price: 5000,
+    seller: "ahsjdjss",
     keywords: ["robe", "swimsuit", "swimming", "bathing", "apparel"],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png",
@@ -135,6 +145,7 @@ export const products = [
       count: 30,
     },
     price: 1200,
+    seller: "ahsjdjss",
     keywords: ["accessories", "shades"],
   },
   {
@@ -146,6 +157,7 @@ export const products = [
       count: 562,
     },
     price: 2500,
+    seller: "ahsjdjss",
     keywords: ["footwear", "sandals", "womens", "beach", "summer"],
   },
   {
@@ -157,6 +169,7 @@ export const products = [
       count: 232,
     },
     price: 7200,
+    seller: "ahsjdjss",
     keywords: ["bedroom", "curtains", "home"],
   },
   {
@@ -168,6 +181,7 @@ export const products = [
       count: 160,
     },
     price: 2500,
+    seller: "ahsjdjss",
     keywords: ["shorts", "apparel", "mens"],
   },
   {
@@ -179,6 +193,7 @@ export const products = [
       count: 846,
     },
     price: 8000,
+    seller: "ahsjdjss",
     keywords: ["water boiler", "appliances", "kitchen"],
   },
   {
@@ -190,6 +205,7 @@ export const products = [
       count: 99,
     },
     price: 2500,
+    seller: "ahsjdjss",
     keywords: ["kleenex", "tissues", "kitchen", "tissues box", "napkins"],
   },
   {
@@ -201,6 +217,7 @@ export const products = [
       count: 215,
     },
     price: 5000,
+    seller: "ahsjdjss",
     keywords: ["hats", "straw hats", "summer", "apparel"],
   },
   {
@@ -212,6 +229,7 @@ export const products = [
       count: 52,
     },
     price: 1800,
+    seller: "ahsjdjss",
     keywords: ["jewelry", "accessories", "womens"],
   },
   {
@@ -223,6 +241,7 @@ export const products = [
       count: 2465,
     },
     price: 13000,
+    seller: "ahsjdjss",
     keywords: ["hooded", "hoodies", "sweaters", "womens", "apparel"],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png",
@@ -236,6 +255,7 @@ export const products = [
       count: 119,
     },
     price: 6000,
+    seller: "ahsjdjss",
     keywords: ["bathmat", "bathroom", "home"],
   },
   {
@@ -247,6 +267,7 @@ export const products = [
       count: 326,
     },
     price: 2700,
+    seller: "ahsjdjss",
     keywords: ["shoes", "flats", "womens", "footwear"],
   },
   {
@@ -258,6 +279,7 @@ export const products = [
       count: 2556,
     },
     price: 3500,
+    seller: "ahsjdjss",
     keywords: ["tshirts", "shirts", "apparel", "mens"],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png",
@@ -271,6 +293,7 @@ export const products = [
       count: 2286,
     },
     price: 8500,
+    seller: "ahsjdjss",
     keywords: ["garbage", "bins", "cans", "kitchen"],
   },
   {
@@ -282,6 +305,7 @@ export const products = [
       count: 456,
     },
     price: 12000,
+    seller: "ahsjdjss",
     keywords: ["bedroom", "bed sheets", "sheets", "covers", "home"],
   },
   {
@@ -293,6 +317,7 @@ export const products = [
       count: 83,
     },
     price: 1850,
+    seller: "ahsjdjss",
     keywords: ["hats", "winter hats", "beanies", "tuques", "apparel", "womens"],
   },
   {
@@ -304,6 +329,7 @@ export const products = [
       count: 9017,
     },
     price: 5100,
+    seller: "ahsjdjss",
     keywords: ["pants", "apparel", "mens"],
   },
   {
@@ -315,6 +341,7 @@ export const products = [
       count: 229,
     },
     price: 8000,
+    seller: "ahsjdjss",
     keywords: ["shoes", "running shoes", "footwear", "mens"],
   },
   {
@@ -326,6 +353,7 @@ export const products = [
       count: 42,
     },
     price: 4000,
+    seller: "ahsjdjss",
     keywords: ["sunglasses", "glasses", "accessories", "shades"],
   },
   {
@@ -337,6 +365,7 @@ export const products = [
       count: 511,
     },
     price: 42000,
+    seller: "ahsjdjss",
     keywords: ["cooking set", "kitchen"],
   },
   {
@@ -348,6 +377,7 @@ export const products = [
       count: 130,
     },
     price: 19000,
+    seller: "ahsjdjss",
     keywords: ["bathroom", "washroom", "mirrors", "home"],
   },
   {
@@ -359,6 +389,7 @@ export const products = [
       count: 248,
     },
     price: 8000,
+    seller: "ahsjdjss",
     keywords: ["pants", "sweatpants", "jogging", "apparel", "womens"],
   },
   {
@@ -370,6 +401,7 @@ export const products = [
       count: 117,
     },
     price: 3000,
+    seller: "ahsjdjss",
     keywords: ["accessories", "womens"],
   },
   {
@@ -381,6 +413,7 @@ export const products = [
       count: 126,
     },
     price: 7500,
+    seller: "ahsjdjss",
     keywords: ["boxes", "food containers", "kitchen"],
   },
   {
@@ -392,6 +425,7 @@ export const products = [
       count: 1211,
     },
     price: 30000,
+    seller: "ahsjdjss",
     keywords: ["coffeemakers", "kitchen", "appliances"],
   },
   {
@@ -403,6 +437,7 @@ export const products = [
       count: 363,
     },
     price: 10000,
+    seller: "ahsjdjss",
     keywords: ["bedroom", "home"],
   },
   {
@@ -414,6 +449,7 @@ export const products = [
       count: 93,
     },
     price: 9500,
+    seller: "ahsjdjss",
     keywords: ["bathroom", "home", "towels"],
   },
   {
@@ -425,6 +461,7 @@ export const products = [
       count: 89,
     },
     price: 3400,
+    seller: "ahsjdjss",
     keywords: ["shoes", "running shoes", "footwear", "womens"],
   },
   {
@@ -436,6 +473,7 @@ export const products = [
       count: 3,
     },
     price: 35000,
+    seller: "ahsjdjss",
     keywords: ["food blenders", "kitchen", "appliances"],
   },
   {
@@ -447,6 +485,7 @@ export const products = [
       count: 679,
     },
     price: 18000,
+    seller: "ahsjdjss",
     keywords: ["mixing bowls", "baking", "cookware", "kitchen"],
   },
   {
@@ -458,6 +497,7 @@ export const products = [
       count: 1045,
     },
     price: 5200,
+    seller: "ahsjdjss",
     keywords: ["kitchen", "kitchen towels", "tissues"],
   },
   {
@@ -469,15 +509,17 @@ export const products = [
       count: 3157,
     },
     price: 9000,
+    seller: "ahsjdjss",
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
   },
 ];
 
-function addProduct(name, price, seller) {
+export function addProduct(name, price, seller) {
   const newProduct = {
-    id: genId(),
+    id: products.length + 1,
     name,
     price,
+    seller: "ahsjdjss",
     seller,
     timestamp: Date.now(),
   };
@@ -485,8 +527,8 @@ function addProduct(name, price, seller) {
   return newProduct;
 }
 
-function getAllProducts() {
+export function getAllProducts() {
   return products;
 }
 
-module.exports = { addProduct, getAllProducts };
+// module.exports = { addProduct, getAllProducts, products };

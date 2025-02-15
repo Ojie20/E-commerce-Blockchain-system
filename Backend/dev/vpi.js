@@ -1,5 +1,7 @@
-const { addProduct, getAllProducts } = require("./product");
+// import { addProduct, getAllProducts, } from "./data/products";
+const { addProduct, getAllProducts } = require("./data/products");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const uuid = require("uuid");
 const Blockchain = require("./blockchain");
@@ -8,6 +10,7 @@ const nodeAddress = uuid.v1().split("-").join("");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 // GET /blockchain
 app.get("/blockchain", function (req, res) {
@@ -24,6 +27,20 @@ app.post("/transaction", function (req, res) {
     )
   );
   res.json({ note: `Transaction will be added in block ${blockIndex}` });
+});
+
+// GET all transactions
+app.get("/transactions", function (req, res) {
+  const allTransactions = [];
+
+  TheChain.chain.forEach((block) => {
+    allTransactions.push(block.transactions);
+  });
+
+  res.json({
+    transactions: allTransactions,
+    length: allTransactions.length,
+  });
 });
 
 // GET /mine
@@ -75,7 +92,7 @@ app.post("/purchase", function (req, res) {
 
 app.get("/wallet/:address", function (req, res) {
   const userAddress = req.params.address;
-  const balance = AbhulimenOjie_7762.getUserBalance(userAddress);
+  const balance = TheChain.getUserBalance(userAddress);
 
   res.json({
     address: userAddress,
@@ -84,6 +101,6 @@ app.get("/wallet/:address", function (req, res) {
 });
 
 // Start the server on port 3000
-app.listen(1504, function () {
-  console.log("Listening on port 1504...");
+app.listen(3001, function () {
+  console.log("Listening on port 3001...");
 });
