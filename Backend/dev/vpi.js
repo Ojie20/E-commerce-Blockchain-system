@@ -87,6 +87,29 @@ app.get("/mine", function (req, res) {
   });
 });
 
+app.post("/mine/:address", function (req, res) {
+  const userAddress = req.params.address;
+  const lastBlock = TheChain.getLastBlock();
+  const previousBlockHash = lastBlock["hash"];
+  const currentBlockData = {
+    transactions: TheChain.pendingTransactions,
+    index: lastBlock["index"] + 1,
+  };
+  const nonce = TheChain.proofOfWork(previousBlockHash, currentBlockData);
+  const blockHash = TheChain.hashBlock(
+    previousBlockHash,
+    currentBlockData,
+    nonce
+  );
+  const newBlock = TheChain.createNewBlock(nonce, previousBlockHash, blockHash);
+  TheChain.createNewTransaction(50, "00", userAddress);
+  res.json({
+    success: true,
+    note: "New block mined successfully",
+    block: newBlock,
+  });
+});
+
 app.post("/register-product", (req, res) => {
   const { name, price, seller } = req.body;
   const product = addProduct(name, price, seller);

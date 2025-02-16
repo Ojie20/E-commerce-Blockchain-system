@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { BlockchainContext } from "../context/BlockchainContext";
 
 function Home() {
-  const [balance, setBalance] = useState(0);
-
-  // Fetch user balance from blockchain API (Modify API URL as needed)
-  useEffect(() => {
-    fetch("http://localhost:3001/wallet/user123") // Replace with actual backend route
-      .then((response) => response.json())
-      .then((data) => setBalance(data.balance))
-      .catch((error) => console.error("Error fetching balance:", error));
-  }, []);
+  const { balance } = useContext(BlockchainContext);
 
   return (
     <div>

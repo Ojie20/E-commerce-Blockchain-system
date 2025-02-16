@@ -6,22 +6,36 @@ export const BlockchainProvider = ({ children }) => {
   const [userAddress, setUserAddress] = useState("");
   const [balance, setBalance] = useState(0);
   const [transactions, setTransactions] = useState([]);
+  const [miningStatus, setMiningStatus] = useState("");
 
   // Define the mine function
   const mineBlue = async () => {
+    setMiningStatus("Mining in Progress......Please wait and don't interact");
+    // setUserAddress(address);
+    setUserAddress("UserAddress");
     try {
-      const response = await fetch("http://localhost:3001/mine", {
-        method: "GET",
-      });
+      const response = await fetch(
+        `http://localhost:3001/mine/${userAddress}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         // Update balance after mining
         getUserBalance(userAddress);
+        setMiningStatus(
+          "Mining Successful! A new block has been added to the blockchain"
+        );
       } else {
         console.error("Mining failed:", data.note);
       }
     } catch (error) {
       console.error("Error during mining:", error);
+      setMiningStatus("Failed to mine block, please try again");
     }
   };
 
@@ -93,6 +107,7 @@ export const BlockchainProvider = ({ children }) => {
         balance,
         mineBlue,
         transactions,
+        miningStatus,
       }}
     >
       {children}
