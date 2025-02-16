@@ -1,14 +1,8 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { BlockchainContext } from "../context/BlockchainContext";
 
 function Transactions() {
-  const [transactions, setTransactions] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3001/transactions") // Adjust based on your node
-      .then((response) => response.json())
-      .then((data) => setTransactions(data.transactions))
-      .catch((error) => console.error("Error fetching transactions:", error));
-  }, []);
+  const { transactions } = useContext(BlockchainContext);
 
   return (
     <div>

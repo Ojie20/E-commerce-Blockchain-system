@@ -43,6 +43,28 @@ app.get("/transactions", function (req, res) {
   });
 });
 
+// GET all transactions
+app.get("/transactions/:address", function (req, res) {
+  const allTransactions = [];
+  const userAddress = req.params.address;
+
+  TheChain.chain.forEach((block) => {
+    block.transactions.forEach((transaction) => {
+      if (
+        transaction.sender == userAddress ||
+        transaction.recipient == userAddress
+      ) {
+        allTransactions.push(transaction);
+      }
+    });
+  });
+
+  res.json({
+    transactions: allTransactions,
+    length: allTransactions.length,
+  });
+});
+
 // GET /mine
 app.get("/mine", function (req, res) {
   const lastBlock = TheChain.getLastBlock();
