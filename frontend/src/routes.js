@@ -12,6 +12,7 @@ function AppRoutes() {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/mine" element={<Mine />} />
+        <Route path="/purchases" element={<Mine />} />
       </Routes>
     </Router>
   );

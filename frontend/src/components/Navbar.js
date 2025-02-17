@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="nav-wrapper container">
           {/* Logo */}
           <Link to="/" className="brand-logo">
-            <img src="/images/icons/logo.png" alt="Logo" className="navbar-logo" width="100%"   />
+            <img src="/images/icons/logo.png" alt="Logo" className="navbar-logo" width="100%" />
           </Link>
 
           {/* Mobile Menu Trigger */}

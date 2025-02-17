@@ -8,6 +8,10 @@ const Blockchain = require("./blockchain");
 const TheChain = new Blockchain();
 const nodeAddress = uuid.v1().split("-").join("");
 const bodyParser = require("body-parser");
+const db = require("./config/database");
+const { registerUser, loginUser } = require("./controllers/authController");
+const WalletController = require("./controllers/walletController");
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -23,7 +27,8 @@ app.post("/transaction", function (req, res) {
     TheChain.createNewTransaction(
       req.body.amount,
       req.body.sender,
-      req.body.recipient
+      req.body.recipient,
+      req.body.productId
     )
   );
   res.json({ note: `Transaction will be added in block ${blockIndex}` });
@@ -80,7 +85,7 @@ app.get("/mine", function (req, res) {
     nonce
   );
   const newBlock = TheChain.createNewBlock(nonce, previousBlockHash, blockHash);
-  TheChain.createNewTransaction(50, "00", nodeAddress);
+  TheChain.createNewTransaction(50, "00", nodeAddress, "");
   res.json({
     note: "New block mined successfully",
     block: newBlock,
@@ -102,7 +107,7 @@ app.post("/mine/:address", function (req, res) {
     nonce
   );
   const newBlock = TheChain.createNewBlock(nonce, previousBlockHash, blockHash);
-  TheChain.createNewTransaction(50, "00", userAddress);
+  TheChain.createNewTransaction(50, "00", userAddress, "");
   res.json({
     success: true,
     note: "New block mined successfully",
@@ -123,16 +128,39 @@ app.get("/products", (req, res) => {
 app.post("/purchase", function (req, res) {
   const { buyer, seller, productId, amount } = req.body;
 
-  const buyerBalance = blockchain.getUserBalance(buyer);
+  if (!buyer || !seller || !productId || amount <= 0) {
+    return res.status(400).json({ error: "Invalid purchase details" });
+  }
+
+  const buyerBalance = TheChain.getUserBalance(buyer);
   if (buyerBalance < amount) {
     return res.status(400).json({ error: "Insufficient balance" });
   }
 
-  // Create transaction
-  const transaction = blockchain.createNewTransaction(amount, buyer, seller);
-  blockchain.addTransactionToPendingTransactions(transaction);
+  // Ensure the product exists before proceeding
+  const products = getAllProducts();
+  if (!products.find((product) => productId === product.id)) {
+    return res.status(404).json({ error: "Product not found" });
+  }
 
-  res.json({ note: "Purchase transaction created", transaction });
+  // Create and validate transaction
+  const transaction = TheChain.createNewTransaction(
+    amount,
+    buyer,
+    seller,
+    productId
+  );
+  if (!transaction) {
+    return res.status(500).json({ error: "Transaction creation failed" });
+  }
+
+  TheChain.addTransactionToPendingTransactions(transaction);
+
+  res.json({
+    success: true,
+    note: "Purchase transaction created successfully",
+    transaction,
+  });
 });
 
 app.get("/wallet/:address", function (req, res) {
@@ -144,6 +172,19 @@ app.get("/wallet/:address", function (req, res) {
     balance: balance,
   });
 });
+
+// Wallet routes
+app.get("/wallet/:address/balance", WalletController.getWalletBalance);
+app.get(
+  "/wallet/:address/transactions",
+  WalletController.getWalletTransactions
+);
+app.post("/wallet/create", WalletController.createWallet);
+app.get("/wallet/user/:userId", WalletController.getUserWallets);
+
+// Add these new routes before other routes
+app.post("/register", registerUser);
+app.post("/login", loginUser);
 
 // Start the server on port 3000
 app.listen(3001, function () {

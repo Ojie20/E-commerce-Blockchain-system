@@ -7,11 +7,6 @@ import Wallet from "./pages/Wallet";
 import Navbar from "./components/Navbar";
 import Transactions from "./pages/transactions";
 import Mine from "./pages/Mine";
-import "materialize-css/dist/css/materialize.min.css";
-import "materialize-css/dist/js/materialize.min.js";
-import M from "materialize-css/dist/js/materialize.min.js";
-
-
 
 function App() {
   useEffect(() => {
@@ -27,6 +22,7 @@ function App() {
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/mine" element={<Mine />} />
+          <Route path="/purchases" element={<Purchases />} />
         </Routes>
       </Router>
     </BlockchainProvider>
