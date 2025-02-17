@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const { getDatabase } = require("../config/database");
 const User = require("../models/User");
 const Wallet = require("../models/Wallet");
-const walletGenerator = require("../utils/walletGenerator");
+const WalletGenerator = require("../utils/walletGenerator");
 
 const registerUser = async (req, res) => {
   const db = getDatabase();
@@ -11,6 +11,9 @@ const registerUser = async (req, res) => {
   try {
     // Start transaction
     await db.run("BEGIN TRANSACTION");
+
+    // Generate wallet address
+    const walletAddress = WalletGenerator.generateWalletAddress();
 
     // Create user
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -26,7 +29,6 @@ const registerUser = async (req, res) => {
     });
 
     // Create wallet
-    const walletAddress = walletGenerator.generateWalletAddress();
     await new Promise((resolve, reject) => {
       db.run(
         "INSERT INTO wallets (userId, address) VALUES (?, ?)",

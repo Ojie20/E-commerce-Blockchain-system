@@ -10,6 +10,7 @@ const nodeAddress = uuid.v1().split("-").join("");
 const bodyParser = require("body-parser");
 const db = require("./config/database");
 const { registerUser, loginUser } = require("./controllers/authController");
+const WalletController = require("./controllers/walletController");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -147,6 +148,15 @@ app.get("/wallet/:address", function (req, res) {
     balance: balance,
   });
 });
+
+// Wallet routes
+app.get("/wallet/:address/balance", WalletController.getWalletBalance);
+app.get(
+  "/wallet/:address/transactions",
+  WalletController.getWalletTransactions
+);
+app.post("/wallet/create", WalletController.createWallet);
+app.get("/wallet/user/:userId", WalletController.getUserWallets);
 
 // Add these new routes before other routes
 app.post("/register", registerUser);
