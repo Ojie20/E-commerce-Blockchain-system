@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
-import { BlockchainContext } from "../context/BlockchainContext";
+import React from "react";
+import "../styles/ProductCard.css"; // Import CSS file for custom card styles
 
 const ProductCard = ({ product }) => {
-  const { buyProduct } = useContext(BlockchainContext);
-
-  const handleBuy = async () => {
-    await buyProduct(product.id, product.seller, product.price);
-  };
-
   return (
-    <div className="product-card">
-      <h3>{product.name}</h3>
-      <p>Seller Address:{product.seller}</p>
-      <p>Price: {product.price} BLUE</p>
-      <button onClick={handleBuy}>Buy Now</button>
+    <div className="card">
+      <div className="card-image">
+        <img src={product.image} alt={product.name} />
+        <span className="card-title">{product.name}</span>
+      </div>
+      <div className="card-content">        
+        <p className="left"><strong>${product.price}</strong></p>
+        <p className="right">{product.rating.stars}⭐</p><br/>
+      </div>
+      <div className="card-action center-align">
+        <a href="#!">Buy Now</a>
+      </div>
     </div>
   );
 };

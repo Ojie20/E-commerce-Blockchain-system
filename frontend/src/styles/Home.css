@@ -1,0 +1,20 @@
+/* Full-screen background */
+.home-container {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url("https://th.bing.com/th/id/OIP.DoNHS9YzhZINjBfdYH5HfwHaE8?rs=1&pid=ImgDetMain");
+    display: flex;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+p{
+    font-size: 26px;
+}
+.h1{
+    font-weight: 400px;
+}

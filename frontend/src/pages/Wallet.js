@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BlockchainContext } from "../context/BlockchainContext";
+import "../styles/Wallet.css"; // Import external CSS file for custom styles
 
 const Wallet = () => {
   const { userAddress, getUserBalance } = useContext(BlockchainContext);
@@ -12,10 +13,18 @@ const Wallet = () => {
   }, [userAddress]);
 
   return (
-    <div>
-      <h1>Wallet</h1>
-      <p>Your Address: {userAddress}</p>
-      <p>Balance: {balance} BLUE</p>
+    <div className="wallet-container">
+      <div className="card">
+        <div className="card-content">
+          <h4 className="center-align">💼 Wallet</h4>
+          <p className="address-text"><strong>Your Address:</strong> {userAddress}</p>
+          <p className="balance-text"><strong>Balance:</strong> {balance} BLUE</p>
+          <div className="wallet-actions center-align">
+            <button className="btn waves-effect waves-light blue darken-2">Deposit</button>
+            <button className="btn waves-effect waves-light blue darken-2">Withdraw</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

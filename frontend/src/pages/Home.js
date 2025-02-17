@@ -1,34 +1,30 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { BlockchainContext } from "../context/BlockchainContext";
+import "../styles/Home.css"; // Import external CSS file
 
-function Home() {
+const Home = () => {
   const { balance } = useContext(BlockchainContext);
 
   return (
-    <div>
-      <h1>🛒 Welcome to Blue Marketplace</h1>
-      <p>
-        Earn and spend <strong>Blue</strong>, our blockchain-based currency!
-      </p>
+    <div className="home-container">
+      {/* Content area */}
+      <div className="overlay-content white-text">
+        <h1 className="h1">
+          🛒 Welcome to <span className="blue-text text-lighten-2">Blue Marketplace</span>
+        </h1>
+        <p>
+          Earn and spend <strong>Blue</strong>, our blockchain-based currency!
+        </p>
+        
 
-      <h2>💰 Your Balance: {balance} Blue</h2>
-
-      <nav>
-        <ul>
-          <li>
-            <Link to="/marketplace">🛍️ View Products</Link>
-          </li>
-          <li>
-            <Link to="/transactions">📜 Transaction History</Link>
-          </li>
-          <li>
-            <Link to="/mine">⛏️ Mine Blue</Link>
-          </li>
-        </ul>
-      </nav>
+        {/* Explore Marketplace Button */}
+        <Link to="/marketplace" className="btn-large blue darken-2 waves-effect waves-light">
+          🏪 Explore Marketplace
+        </Link>
+      </div>
     </div>
   );
-}
+};
 
 export default Home;
