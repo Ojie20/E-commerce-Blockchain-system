@@ -6,6 +6,7 @@ import Wallet from "./pages/Wallet";
 import Navbar from "./components/Navbar";
 import Transactions from "./pages/transactions";
 import Mine from "./pages/Mine";
+import Purchases from "./pages/Purchases";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/mine" element={<Mine />} />
+          <Route path="/purchases" element={<Purchases />} />
         </Routes>
       </Router>
     </BlockchainProvider>

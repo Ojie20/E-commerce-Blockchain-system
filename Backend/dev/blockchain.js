@@ -37,12 +37,14 @@ Blockchain.prototype.getLastBlock = function () {
 Blockchain.prototype.createNewTransaction = function (
   amount,
   sender,
-  recipient
+  recipient,
+  productId
 ) {
   const newTransaction = {
     amount: amount,
     sender: sender,
     recipient: recipient,
+    productId: productId,
   };
 
   this.pendingTransactions.push(newTransaction);

@@ -13,7 +13,10 @@ const Navbar = () => {
       <Link to="/wallet" style={{ marginRight: "15px", color: "white" }}>
         Wallet
       </Link>
-      <Link to="/transactions" style={{ color: "white" }}>
+      <Link to="/purchases" style={{ marginRight: "15px", color: "white" }}>
+        Purchases
+      </Link>
+      <Link to="/transactions" style={{ marginRight: "15px", color: "white" }}>
         Transactions
       </Link>
       <li>
