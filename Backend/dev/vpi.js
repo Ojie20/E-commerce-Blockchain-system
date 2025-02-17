@@ -8,6 +8,9 @@ const Blockchain = require("./blockchain");
 const TheChain = new Blockchain();
 const nodeAddress = uuid.v1().split("-").join("");
 const bodyParser = require("body-parser");
+const db = require("./config/database");
+const { registerUser, loginUser } = require("./controllers/authController");
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -144,6 +147,10 @@ app.get("/wallet/:address", function (req, res) {
     balance: balance,
   });
 });
+
+// Add these new routes before other routes
+app.post("/register", registerUser);
+app.post("/login", loginUser);
 
 // Start the server on port 3000
 app.listen(3001, function () {
