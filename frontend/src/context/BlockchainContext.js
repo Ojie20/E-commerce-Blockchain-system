@@ -67,15 +67,17 @@ export const BlockchainProvider = ({ children }) => {
   }, [userAddress]);
 
   const buyProduct = async (productId, seller, price) => {
+    console.log(productId, seller, price);
     try {
       const response = await fetch("http://localhost:3001/purchase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          buyer: "UserAddress",
+          seller,
           productId,
           price,
-          seller,
-          buyer: "userAddress", // Replace with the actual buyer address
+          // Replace with the actual buyer address
         }),
       });
 

@@ -123,14 +123,14 @@ app.get("/products", (req, res) => {
 app.post("/purchase", function (req, res) {
   const { buyer, seller, productId, amount } = req.body;
 
-  const buyerBalance = blockchain.getUserBalance(buyer);
+  const buyerBalance = TheChain.getUserBalance(buyer);
   if (buyerBalance < amount) {
     return res.status(400).json({ error: "Insufficient balance" });
   }
 
   // Create transaction
-  const transaction = blockchain.createNewTransaction(amount, buyer, seller);
-  blockchain.addTransactionToPendingTransactions(transaction);
+  const transaction = TheChain.createNewTransaction(amount, buyer, seller);
+  TheChain.addTransactionToPendingTransactions(transaction);
 
   res.json({ note: "Purchase transaction created", transaction });
 });
