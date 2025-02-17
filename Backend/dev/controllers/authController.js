@@ -3,6 +3,13 @@ const { getDatabase } = require("../config/database");
 const User = require("../models/User");
 const Wallet = require("../models/Wallet");
 const WalletGenerator = require("../utils/walletGenerator");
+const Blockchain = require("../blockchain"); // Add this import
+
+// Get blockchain instance
+let TheChain;
+const initBlockchain = (blockchainInstance) => {
+  TheChain = blockchainInstance;
+};
 
 const registerUser = async (req, res) => {
   const db = getDatabase();
@@ -64,22 +71,42 @@ const registerUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
+  const db = getDatabase();
   const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res
+      .status(400)
+      .json({ error: "Username and password are required" });
+  }
+
   try {
-    const user = await User.findByUsername(username);
+    // Get user
+    const user = await new Promise((resolve, reject) => {
+      db.get(
+        "SELECT * FROM users WHERE username = ?",
+        [username],
+        (err, row) => {
+          if (err) reject(err);
+          resolve(row);
+        }
+      );
+    });
+
     if (!user) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
+    // Verify password
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    // Get user's wallet address
+    // Get user's wallet
     const wallet = await new Promise((resolve, reject) => {
       db.get(
-        "SELECT address FROM wallets WHERE user_id = ?",
+        "SELECT * FROM wallets WHERE userId = ?",
         [user.id],
         (err, row) => {
           if (err) reject(err);
@@ -88,12 +115,18 @@ const loginUser = async (req, res) => {
       );
     });
 
-    res.status(200).json({
-      message: "Login successful",
+    // Get balance from blockchain
+    const balance = TheChain ? TheChain.getUserBalance(wallet.address) : 0;
+
+    res.json({
+      success: true,
+      userId: user.id,
+      username: user.username,
       walletAddress: wallet.address,
-      balance: TheChain.getUserBalance(wallet.address),
+      balance: balance,
     });
   } catch (error) {
+    console.error("Login error:", error);
     res.status(500).json({ error: "Error logging in" });
   }
 };
@@ -101,4 +134,5 @@ const loginUser = async (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
+  initBlockchain, // Export the init function
 };
