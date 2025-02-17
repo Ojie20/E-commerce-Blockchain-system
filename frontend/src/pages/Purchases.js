@@ -1,11 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useMemo } from "react";
 import { BlockchainContext } from "../context/BlockchainContext";
-import ProductCard from "../components/ProductCard";
+import PurchaseCard from "../components/PurchaseCard";
 
 function Purchases() {
   const [products, setProducts] = useState([]);
   const { transactions } = useContext(BlockchainContext);
-  const purchases = transactions.filter((tx) => tx.productId);
+  // const purchases = transactions.filter((tx) => tx.productId);
+  const purchases = useMemo(
+    () => transactions.filter((tx) => tx.productId),
+    [transactions]
+  );
   console.log(purchases);
   const [purchasedProducts, setPurchasedProducts] = useState([]);
 
@@ -34,7 +38,7 @@ function Purchases() {
       <h1>📜 Transaction History</h1>
       <ul>
         {purchasedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <PurchaseCard key={product.id} product={product} />
         ))}
       </ul>
     </div>
