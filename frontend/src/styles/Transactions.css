@@ -1,52 +1,54 @@
 /* Set background image for a full-screen container */
 .maincontainer {
     position: relative;
-    height: 120vh;
-    /* Full viewport height */
-    width: 100vw;
-    /* Full viewport width */
-
-    /* Background image with dark overlay */
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 60px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
         url("https://builtin.com/sites/www.builtin.com/files/inline-images/inside-crypto-cryptocurrency.png");
-
     background-size: cover;
-    /* Cover full screen */
     background-position: center;
-    background-repeat: no-repeat;
-
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: flex-start;
 }
 
 /* Transactions Container */
 .transactions-container {
-    
     max-width: 800px;
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
 }
 
 /* Transaction Heading */
 .transactions-heading {
-    text-align: center;
     font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+    padding: 20px;
+    margin: 0;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px solid #eee;
 }
 
 /* Transactions List */
 .transactions-list {
     list-style: none;
-    padding: 0;
+    padding: 20px;
     margin: 0;
+    overflow-y: auto;
+    flex: 1;
 }
 
 /* Transaction Items */
@@ -55,27 +57,60 @@
 }
 
 .transaction-card {
-    background-color: #fff;
-    padding: 20px;
+    background: white;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
 }
 
 .transaction-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-2px);
 }
 
 .transaction-details {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    margin: 8px 0;
     color: #444;
+    font-size: 0.95rem;
 }
 
 .transaction-details strong {
-    color: #4caf50;
+    color: #2c3e50;
+    margin-right: 8px;
 }
 
-.transaction-card p:last-child {
-    margin-bottom: 0;
+/* Custom Scrollbar */
+.transactions-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.transactions-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.transactions-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.transactions-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (max-width: 768px) {
+    .transactions-container {
+        width: 95%;
+        margin: 10px auto;
+        max-height: 75vh;
+    }
+
+    .transactions-heading {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+
+    .transaction-card {
+        padding: 12px;
+    }
 }

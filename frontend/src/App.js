@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { BlockchainProvider } from "./context/BlockchainContext";
 import Home from "./pages/Home";
 import Marketplace from "./pages/Marketplace";
@@ -7,7 +12,7 @@ import Wallet from "./pages/Wallet";
 import M from "materialize-css/dist/js/materialize.min.js";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Transactions from "./pages/Transactions";
+import Transactions from "./pages/transactions";
 import Mine from "./pages/Mine";
 import Purchases from "./pages/Purchases";
 

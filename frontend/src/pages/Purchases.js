@@ -36,7 +36,7 @@ function Purchases() {
   return (
     <div className="maincontainer">
       <div className="purchases-container">
-        <h1 className="purchases-header">📜 Transaction History</h1>
+        <h1 className="purchases-header">📜 Purchase History</h1>
         <div className="purchases-list">
           {purchasedProducts.length > 0 ? (
             purchasedProducts.map((product) => (
@@ -48,7 +48,6 @@ function Purchases() {
         </div>
       </div>
     </div>
-    
   );
 }
 
