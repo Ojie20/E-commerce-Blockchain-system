@@ -1,0 +1,46 @@
+/* Wallet Page Styles */
+.wallet-container {
+    display: flex;
+    
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
+            url("https://builtin.com/sites/www.builtin.com/files/inline-images/inside-crypto-cryptocurrency.png");
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card Styling */
+.card {
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Title Styling */
+.card-content h4 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #00796b;
+}
+
+/* Address and Balance Text Styling */
+.address-text,
+.balance-text {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Buttons Styling */
+.wallet-actions button {
+    margin: 10px;
+    width: 45%;
+    font-weight: 600;
+}

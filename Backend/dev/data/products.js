@@ -1,5 +1,5 @@
 //List of all the products and their attributes
-export const products = [
+const products = [
   {
     id: "a",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -514,7 +514,7 @@ export const products = [
   },
 ];
 
-export function addProduct(name, price, seller) {
+function addProduct(name, price, seller) {
   const newProduct = {
     id: products.length + 1,
     name,
@@ -527,8 +527,8 @@ export function addProduct(name, price, seller) {
   return newProduct;
 }
 
-export function getAllProducts() {
+function getAllProducts() {
   return products;
 }
 
-// module.exports = { addProduct, getAllProducts, products };
+module.exports = { addProduct, getAllProducts, products };

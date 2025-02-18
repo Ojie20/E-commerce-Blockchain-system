@@ -1,0 +1,91 @@
+
+.card {
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* Image Style */
+.card-image img {
+    object-fit: cover;
+    height: 200px;
+}
+.card:hover .card-image img {
+    transform: scale(1.1);
+    /* Zoom in image */
+}
+
+
+/* Card Content */
+
+.card-content p{
+    display: inline-block;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: background-color 0.8s ease;
+}
+
+/* Card Action */
+.card-action a {
+    font-size: 1.1rem;
+    color: #00796b;
+    font-weight: 600;
+}
+.card:hover .card-title {
+    background-color: rgba(0, 0, 255, 0.4);
+    /* Light blue dim */
+    border-radius: 4px;
+    padding: 8px;
+}
+.buy-now-btn {
+    background-color: #8c5803;
+    /* Green background */
+    color: white;
+    /* White text */
+    border: none;
+    /* Remove default border */
+    padding: 8px 12px;
+    /* Adjust padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove text underline */
+    display: inline-block;
+    /* Align with text or other elements */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Show pointer on hover */
+    border-radius: 8px;
+    /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.buy-now-btn:hover {
+    background-color: #bd8e15;
+    /* Darker green on hover */
+    transform: scale(1.05);
+    /* Slightly enlarge button on hover */
+}
+
+.buy-now-btn:active {
+    background-color: #388e3c;
+    /* Even darker green when button is pressed */
+    transform: scale(1);
+    /* Return to original size when clicked */
+}
+
+.buy-now-btn:focus {
+    outline: none;
+    /* Remove focus outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* Add a soft shadow on focus */
+}
