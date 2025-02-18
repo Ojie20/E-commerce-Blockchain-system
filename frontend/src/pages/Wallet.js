@@ -17,8 +17,8 @@ const Wallet = () => {
       <div className="card">
         <div className="card-content">
           <h4 className="center-align">💼 Wallet</h4>
-          <p className="address-text"><strong>Your Address:</strong> {userAddress}</p>
-          <p className="balance-text"><strong>Balance:</strong> {balance} BLUE</p>
+          <p className="address-text"><strong>Your Address:</strong> {userAddress}</p><br/>
+          <p className="balance-text"><strong>🪙Balance:</strong> <span className="blue-text text-darken-4">{balance}</span> BLUE</p>
           <div className="wallet-actions center-align">
             <button className="btn waves-effect waves-light blue darken-2">Deposit</button>
             <button className="btn waves-effect waves-light blue darken-2">Withdraw</button>

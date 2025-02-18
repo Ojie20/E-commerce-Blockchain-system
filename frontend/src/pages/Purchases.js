@@ -1,16 +1,17 @@
 import { useContext, useEffect, useState, useMemo } from "react";
 import { BlockchainContext } from "../context/BlockchainContext";
 import PurchaseCard from "../components/PurchaseCard";
+import "../styles/Purchases.css"; // Import the stylesheet
 
 function Purchases() {
   const [products, setProducts] = useState([]);
   const { transactions } = useContext(BlockchainContext);
-  // const purchases = transactions.filter((tx) => tx.productId);
+
   const purchases = useMemo(
     () => transactions.filter((tx) => tx.productId),
     [transactions]
   );
-  console.log(purchases);
+
   const [purchasedProducts, setPurchasedProducts] = useState([]);
 
   useEffect(() => {
@@ -24,24 +25,30 @@ function Purchases() {
     const purchasedProductsIds = purchases.map(
       (purchase) => purchase.productId
     );
-    console.log(purchasedProductsIds);
 
     const boughtProducts = products.filter((product) =>
       purchasedProductsIds.includes(product.id)
     );
-    console.log(boughtProducts);
 
     setPurchasedProducts(boughtProducts);
-  }, [purchases]);
+  }, [purchases, products]); // Added `products` dependency
+
   return (
-    <div>
-      <h1>📜 Transaction History</h1>
-      <ul>
-        {purchasedProducts.map((product) => (
-          <PurchaseCard key={product.id} product={product} />
-        ))}
-      </ul>
+    <div className="maincontainer">
+      <div className="purchases-container">
+        <h1 className="purchases-header">📜 Transaction History</h1>
+        <div className="purchases-list">
+          {purchasedProducts.length > 0 ? (
+            purchasedProducts.map((product) => (
+              <PurchaseCard key={product.id} product={product} />
+            ))
+          ) : (
+            <p className="no-purchases">No purchases made yet.</p>
+          )}
+        </div>
+      </div>
     </div>
+    
   );
 }
 

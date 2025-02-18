@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import "materialize-css/dist/css/materialize.min.css";
+
 import M from "materialize-css/dist/js/materialize.min.js";
 
 
@@ -29,6 +31,7 @@ const Navbar = () => {
             <li><Link to="/wallet" className="black-text">Wallet</Link></li>
             <li><Link to="/transactions" className="black-text">Transactions</Link></li>
             <li><Link to="/mine" className="black-text">Mine</Link></li>
+            <li><Link to="/purchases" className="black-text">Purchases</Link></li>
           </ul>
         </div>
       </nav>

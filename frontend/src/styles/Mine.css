@@ -1,0 +1,63 @@
+/* Mine.css */
+
+/* General container for the Mine page */
+.mine-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Make the container take the full screen height */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8 )),
+            url("https://builtin.com/sites/www.builtin.com/files/inline-images/inside-crypto-cryptocurrency.png");
+    /* Add your background image */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Heading for the page */
+.mine-container h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Balance information */
+.mine-container h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+/* Button styling */
+.mine-container button {
+    padding: 10px 20px;
+    font-size: 30px;
+    background-color: #42a5f5;
+    /* Light blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.mine-container button:hover {
+    background-color: #1e88e5;
+    /* Darker blue when hovering */
+}
+
+/* Mining status message */
+.mine-container p {
+    font-size: 27px;
+    margin-top: 10px;
+    color: #ffeb3b;
+    /* Yellow text for mining status */
+    font-weight: bold;
+}

@@ -84,6 +84,7 @@ function Marketplace() {
           &gt;
         </button>
       </div>
+      
     </div>
   );
 }

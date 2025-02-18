@@ -1,0 +1,81 @@
+/* Set background image for a full-screen container */
+.maincontainer {
+    position: relative;
+    height: 120vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+
+    /* Background image with dark overlay */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+        url("https://builtin.com/sites/www.builtin.com/files/inline-images/inside-crypto-cryptocurrency.png");
+
+    background-size: cover;
+    /* Cover full screen */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Transactions Container */
+.transactions-container {
+    
+    max-width: 800px;
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Transaction Heading */
+.transactions-heading {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Transactions List */
+.transactions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Transaction Items */
+.transaction-item {
+    margin-bottom: 15px;
+}
+
+.transaction-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.transaction-card:hover {
+    transform: scale(1.02);
+}
+
+.transaction-details {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.transaction-details strong {
+    color: #4caf50;
+}
+
+.transaction-card p:last-child {
+    margin-bottom: 0;
+}
